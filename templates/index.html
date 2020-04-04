@@ -1,0 +1,32 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap-конструктор</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/first.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="col-12">
+            <h1>Выбери одну...</h1>
+        </div>
+        {% for item in komponent['object'] %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="{{'/work/' + item['program_title']}}">
+                <div class="block">
+                    <img src="{{url_for('static', filename='img/' + item['image_name'])}}">
+                    <p>{{item['title_for_human']}}</p>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+        <div class="col-12">
+            <h6>...чтобы создать тысячи</h6>
+        </div>
+    </div>
+</body>
+</html>
