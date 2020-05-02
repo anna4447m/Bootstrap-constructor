@@ -1,0 +1,48 @@
+{% extends "work.html" %}
+
+{% block visual %}
+<div class="progress" style="height: {{params['heights']}}px; width: 100%">
+  <div class="progress-bar bg-{{params['color']}}{{params['strips']}}{{params['animate']}}" role="progressbar" style="width: {{params['running_value']}}%" aria-valuenow="{{params['running_value']}}" aria-valuemin="0" aria-valuemax="100">{{texts['label_bar']}}</div>
+</div>
+{% endblock %}
+
+{% block cod %}
+<xmp><div class="progress" style="height: {{params['heights']}}px; width: 100%">
+  <div class="progress-bar bg-{{params['color']}}{{params['strips']}}{{params['animate']}}" role="progressbar" style="width: {{params['running_value']}}%" aria-valuenow="{{params['running_value']}}" aria-valuemin="0" aria-valuemax="100">{{texts['label_bar']}}</div>
+</div></xmp>
+{% endblock %}
+
+{% block properties %}
+<form action="" method="post" novalidate>
+    {{ form_p.hidden_tag() }}
+    <div class="form-group">
+        {{ form_p.color.label }} <br>
+        {{ form_p.color(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form_p.running_value.label }}<br>
+        {{ form_p.running_value(class="form-control", min=1, max=100, value=75) }}
+    </div>
+    <div class="form-group">
+        {{ form_p.heights.label }}<br>
+        {{ form_p.heights(class="form-control", min=1, value=5) }}
+    </div>
+    <div class="form-group form-check">
+        {{ form_p.strips(class="form-check-input") }} {{ form_p.strips.label(class="form-check-label") }}
+    </div>
+    <div class="form-group form-check">
+        {{ form_p.animate(class="form-check-input") }} {{ form_p.animate.label(class="form-check-label") }}
+    </div>
+    {{ form_p.submit_p(type="submit", class="btn btn-primary") }}
+</form>
+{% endblock %}
+
+{% block text_edit %}
+<form action="" method="post" novalidate>
+    <div class="form-group">
+        {{ form_t.label_bar.label }} <br>
+        {{ form_t.label_bar(class="form-control") }}
+    </div>
+    {{ form_t.submit_t(type="submit", class="btn btn-primary") }}
+</form>
+{% endblock %}
