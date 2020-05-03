@@ -1,7 +1,7 @@
 {% extends "work.html" %}
 
 {% block visual %}
-<div class="alert alert-{{params['color']}}" role="alert">
+<div class="alert {{params['color_alert']}}" role="alert">
   {{ texts['text_alert']|replace(zamena, params['link_color'])|safe }}
     {% if params['dagger'] %}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -13,7 +13,7 @@
 
 {% block cod %}
 <xmp>
-<div class="alert alert-{{params['color']}}" role="alert">
+<div class="alert {{params['color_alert']}}" role="alert">
   {{texts['text_alert']|replace(zamena, params['link_color'])|safe}}{% if params['dagger'] %}
    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span>
@@ -25,8 +25,8 @@
 <form action="" method="post" novalidate>
     {{ form_p.hidden_tag() }}
     <div class="form-group">
-        {{ form_p.color.label }} <br>
-        {{ form_p.color(class="form-control") }}
+        {{ form_p.color_alert.label }} <br>
+        {{ form_p.color_alert(class="form-control") }}
     </div>
     <div class="form-group form-check">
         {{ form_p.link_color(class="form-check-input") }} {{ form_p.link_color.label(class="form-check-label") }}

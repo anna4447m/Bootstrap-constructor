@@ -1,11 +1,11 @@
 {% extends "work.html" %}
 
 {% block visual %}
-    <button type="button" class="btn btn-{{params['backdrop']}}{{ params['btn_color'] }}{{params['sizing']}}{{params['condition']}}"> {{texts['caption_bth']}}</button>
+    <button type="button" class="btn btn-{{params['backdrop']}}{{ params['btn_color'] }}{{params['sizing']}}{{params['condition']}}{{params['all_w']}}">{{texts['caption_bth']}}</button>
 {% endblock %}
 
 {% block cod %}
-<xmp><button type="button" class="btn btn-{{params['backdrop']}}{{ params['btn_color'] }}{{params['sizing']}}{{params['condition']}}">
+<xmp><button type="button" class="btn btn-{{params['backdrop']}}{{ params['btn_color'] }}{{params['sizing']}}{{params['condition']}}{{params['all_w']}}">
     {{texts['caption_bth']}}
 </button></xmp>
 {% endblock %}
@@ -23,6 +23,9 @@
     <div class="form-group">
         {{ form_p.sizing.label }} <br>
         {{ form_p.sizing(class="form-control") }}
+    </div>
+    <div class="form-group form-check">
+        {{ form_p.all_w(class="form-check-input") }} {{ form_p.all_w.label(class="form-check-label") }}
     </div>
     <div class="form-group">
         {{ form_p.condition.label }} <br>

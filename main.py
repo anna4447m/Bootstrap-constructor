@@ -10,8 +10,8 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 params = {}
 texts = {}
 COMPONENT_PARAMETERS = {  # этом можно засунуть в таблицу, где все компоненты, ещё одним столибком. По названию компонента получить кортеж (строчка 173)
-    'button': ('btn_color', 'backdrop', 'sizing', 'condition'),
-    'alert': ('color', 'link_color', 'dagger'),
+    'button': ('btn_color', 'backdrop', 'sizing', 'condition', 'all_w'),
+    'alert': ('color_alert', 'link_color', 'dagger'),
     'progress_bar': ('color', 'running_value', 'heights', 'strips', 'animate')
 }
 COMPONENT_TEXT = {  # и это тоже. По названию копомнента получить кортеж (строчка 172)
@@ -38,8 +38,11 @@ PROPERTIES = {  # а вот насчет этого не знаю. Во-перв
     'sizing': {
         '1': ' btn-sm',
         '2': '',
-        '3': ' btn-lg',
-        '4': ' btn-block'
+        '3': ' btn-lg'
+    },
+    'all_w': {
+        True: ' btn-block',
+        False: ''
     },
     'condition': {
         'usual': '',
@@ -55,6 +58,16 @@ PROPERTIES = {  # а вот насчет этого не знаю. Во-перв
         'griz': 'info',
         'white': 'light',
         'black': 'dark'
+    },
+    'color_alert': {
+        'blue': 'alert-primary',
+        'grey': 'alert-secondary',
+        'green': 'alert-success',
+        'red': 'alert-danger',
+        'yellow': 'alert-warning',
+        'griz': 'alert-info',
+        'white': 'alert-light',
+        'black': 'alert-dark'
     },
     'link_color': {
         True: '<a class="alert-link"',
@@ -100,16 +113,33 @@ class PropertiesForm(FlaskForm):
         ('black', 'Черный')
     ],
                         default="blue")
-    backdrop = BooleanField('Фон', default=True)
-    link_color = BooleanField('Закрашивание ссылки', default=False)
-    dagger = BooleanField('Наличие крестика', default=False)
-    strips = BooleanField('Наличие полосок', default=False)
-    animate = BooleanField('Анимация', default=False)
+    color_alert = SelectField('Цвет', choices=[
+        ('blue', 'Синий'),
+        ('grey', 'Серый'),
+        ('green', 'Зеленый'),
+        ('red', 'Красный'),
+        ('yellow', 'Желтый'),
+        ('griz', 'Бирюзовый'),
+        ('white', 'Белый'),
+        ('black', 'Черный')
+    ],
+                        default="blue")
+    backdrop = BooleanField('Фон',
+                            default=True)
+    link_color = BooleanField('Закрашивание ссылки',
+                              default=False)
+    dagger = BooleanField('Наличие крестика',
+                          default=False)
+    strips = BooleanField('Наличие полосок',
+                          default=False)
+    animate = BooleanField('Анимация',
+                           default=False)
+    all_w = BooleanField('Во всю ширину:',
+                         default=False)
     sizing = SelectField('Размер:', choices=[
         ('1', 'Маленький'),
         ('2', 'Обычный'),
-        ('3', 'Большой'),
-        ('4', 'Во всю ширину')
+        ('3', 'Большой')
     ],
                          default=2)
     condition = SelectField('Состояние:', choices=[
@@ -160,7 +190,7 @@ def index():
     }
     params = {}
     texts = {}
-    return render_template('index.html', komponent=komponents)
+    return render_template('index.html', komponent=komponents, name='first')
 
 
 @app.route('/work/<name_object>', methods=['GET', 'POST'])
@@ -197,7 +227,7 @@ def work(name_object):
         for field in form_t:
             if field.name in com_text:
                 texts[field.name] = field.data
-    return render_template(s, form_p=form_p, form_t=form_t, params=params, texts=texts, zamena=zamena)
+    return render_template(s, form_p=form_p, form_t=form_t, params=params, texts=texts, zamena=zamena, name='two', title=name_object)
 
 
 if __name__ == '__main__':
