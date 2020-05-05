@@ -1,4 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+from flask_restful import Api
+
+from data import db_session, objects_api, users_api, ideas_api, prop_api
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
@@ -231,4 +234,9 @@ def work(name_object):
 
 
 if __name__ == '__main__':
+    db_session.global_init("db/objects_properties.sqlite")
+    app.register_blueprint(objects_api.blueprint)
+    app.register_blueprint(users_api.blueprint)
+    app.register_blueprint(ideas_api.blueprint)
+    app.register_blueprint(prop_api.blueprint)
     app.run(port=8080, host='127.0.0.1')
