@@ -17,13 +17,21 @@
                 <h1>Bootstrap-constructor</h1>
             </div>
             <div class="col-4">
+                {% if current_user.is_authenticated %}
+                <p>Вы вошли как {{current_user.nickname}}</p>
+                <a class="btn btn-success bth-sm" href="/ideas">К моим идеям</a>
+                <a class="btn btn-primary bth-sm" href="/logout">Выйти</a>
+                {% else %}
                 <a class="btn btn-primary bth-sm" href="/register">Зарегистрироваться</a>
                 <a class="btn btn-success bth-sm" href="/login">Войти</a>
                 <p>чтобы сохранить свои идеи</p>
+                {% endif %}
             </div>
         </div>
     </header>
-    {% block content %}{% endblock %}
+    <main role="main" class="container">
+        {% block content %}{% endblock %}
+    </main>
     <footer>
         <p>
             Создано в рамках обучения по программе "Яндекс.Лицей" <br>

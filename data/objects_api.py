@@ -15,7 +15,8 @@ def get_objects():
     return jsonify(
         {
             'object':
-                [item.to_dict(only=('program_title', 'title_for_human', 'image_name'))
+                [item.to_dict(only=('id', 'program_title', 'title_for_human', 'image_name',
+                                    'component_parameters', 'component_text'))
                  for item in obj]
         }
     )
@@ -29,6 +30,7 @@ def get_one_object(obj_name):
         return jsonify({'error': 'Not found'})
     return jsonify(
         {
-            'object': obj.to_dict(only=('program_title', 'title_for_human', 'image_name'))
+            'object': obj.to_dict(only=('id', 'program_title', 'title_for_human', 'image_name',
+                                        'component_parameters', 'component_text'))
         }
     )

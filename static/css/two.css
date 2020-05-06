@@ -9,25 +9,19 @@ html {
 }
 body {
     background-color: #3BB08F;
-    /* font-weight: bold;
-    font-size: 30px; */
     font-family: Arial;
     min-height: 100%;
     height: 1px;
     margin: 0px;
 }
-.container {
-    display: flex;
-    justify-content: center;
-    align-content: stretch;
-    align-items: stretch;
-    flex-wrap: wrap;
-    height: 90%;
+main.container {
+    padding-top: 30px;
 }
-div.heades div.container {
-    height:auto;
+.parent {
+    display: flex;
     justify-content: space-between;
-    padding-top: 10px;
+    align-items: stretch;
+    align-content: stretch;
 }
 .block {
     padding: 10px;
@@ -37,14 +31,23 @@ div.heades div.container {
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    /*height: 100%;*/
+    width: 49%;
+}
+.block-save {
+    padding: 10px;
+    text-align: left;
+    background-color: #FFFFFF;
+    border: 4px solid white;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 h2 {
     color: #FFFFFF;
     margin-bottom: 30px;
     font-weight: bold;
     font-family: Arial;
-    /*font-size: 60px;*/
 }
 .to_main {
     border: 4px solid white;
@@ -55,24 +58,12 @@ h2 {
     font-family: Arial;
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .to_main:hover {
     background-color: #FFFFFF;
     color: #3BB08F;
-}
-.block-visual {
-    height: 48%;
-    min-height: 68px;
-}
-.block-cod {
-    height: 40%;
-    min-height: 50px;
-}
-.block-prop{
-    min-height: 46%;
-}
-.block-edit {
-    min-height: 42%;
 }
 .cod{
     overflow: auto;
@@ -100,7 +91,4 @@ h2 {
 .text_edit {
     text-align: left;
     padding: 10px;
-}
-.upfooter {
-    height: 70px;
 }

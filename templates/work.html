@@ -1,43 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="heades">
-        <div class="container">
-            <div class="col-9">
-                <h2>{{title}}</h2>
-            </div>
-            <div class="col-3">
-                <a href="/index">
-                 <div class="to_main">На главную</div>
-                </a>
-            </div>
+<div class="parent">
+    <h2>{{title}}</h2>
+    <a href="/index">
+        <div class="to_main">На главную</div>
+    </a>
+</div>
+<div class="parent">
+    <div class="block">
+        <div class="visual">
+            {% block visual %}{% endblock %}
         </div>
     </div>
-    <div class="container">
-        <div class="col-12 col-md-6">
-            <div class="block block-visual">
-                <div class="visual">
-                    {% block visual %}{% endblock %}
-                </div>
-            </div>
-            <div class="block block-cod">
-                <div class="cod">
-                    {% block cod %}{% endblock %}
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6">
-            <div class="block block-prop">
-                <div class="properties">
-                    {% block properties %}{% endblock %}
-                </div>
-            </div>
-            <div class="block block-edit">
-                <div class="text_edit">
-                    {% block text_edit %}{% endblock %}
-                </div>
-            </div>
+
+    <div class="block">
+        <div class="properties">
+            {% block properties %}{% endblock %}
         </div>
     </div>
-    <div class="upfooter"></div>
+</div>
+<div class="parent">
+    <div class="block">
+        <div class="cod">
+            {% block cod %}{% endblock %}
+        </div>
+    </div>
+    <div class="block">
+        <div class="text_edit">
+            {% block text_edit %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% if current_user.is_authenticated %}
+<div class="block-save">
+    {% if edit %}
+    <form action="" method="post" novalidate>
+        {{ form_s.hidden_tag() }}
+        <p>
+            {{ form_s.name.label }} <br>
+            {{ form_s.name(class="form-control") }}
+        </p>
+        <p>
+            {{ form_s.submit_edit(type="submit", class="btn btn-primary") }}
+            {{ form_s.submit_save(type="submit", class="btn btn-primary") }}
+        </p>
+    </form>
+    {% else %}
+    <form action="" method="post" novalidate>
+        {{ form_s.hidden_tag() }}
+        <p>
+            {{ form_s.name.label }} <br>
+            {{ form_s.name(class="form-control") }}
+        </p>
+        <p>{{ form_s.submit(type="submit", class="btn btn-primary") }} </p>
+    </form>
+    {% endif %}
+</div>
+{% endif %}
 {% endblock %}

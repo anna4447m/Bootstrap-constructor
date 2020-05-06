@@ -15,7 +15,7 @@ def get_ideas():
     return jsonify(
         {
             'ideas':
-                [item.to_dict(only=('user_id', 'component_id', 'idea_name', 'created_date',
+                [item.to_dict(only=('id', 'user_id', 'component_id', 'idea_name', 'created_date',
                                     'component_parameters_values', 'component_text'))
                  for item in idea]
         }
@@ -30,8 +30,8 @@ def get_one_idea(idea_id):
         return jsonify({'error': 'Not found'})
     return jsonify(
         {
-            'idea': idea.to_dict(only=('user_id', 'component_id', 'idea_name', 'created_date',
-                                    'component_parameters_values', 'component_text'))
+            'idea': idea.to_dict(only=('id', 'user_id', 'component_id', 'idea_name', 'created_date',
+                                       'component_parameters_values', 'component_text'))
         }
     )
 

@@ -15,7 +15,7 @@ def get_users():
     return jsonify(
         {
             'users':
-                [item.to_dict(only=('login', 'nickname', 'created_date'))
+                [item.to_dict(only=('id', 'login', 'nickname', 'created_date'))
                  for item in user]
         }
     )
@@ -29,7 +29,7 @@ def get_one_user(user_login):
         return jsonify({'error': 'Not found'})
     return jsonify(
         {
-            'user': user.to_dict(only=('login', 'nickname', 'created_date'))
+            'user': user.to_dict(only=('id', 'login', 'nickname', 'created_date'))
         }
     )
 
@@ -43,4 +43,3 @@ def delete_user(user_login):
     session.delete(user)
     session.commit()
     return jsonify({'success': 'OK'})
-

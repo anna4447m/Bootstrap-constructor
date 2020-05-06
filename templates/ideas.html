@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="parent">
+    <h2>Мои идеи</h2>
+    <a href="/index">
+        <div class="to_main">На главную</div>
+    </a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Название компонента</td>
+        <td>Кодовое название</td>
+        <td>Дата создания</td>
+        <td>Действия:</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for idea in ideas %}
+    <tr>
+        <td>{{idea.id}}</td>
+        <td>{{idea.object.title_for_human}}</td>
+        <td>{{idea.idea_name}}</td>
+        <td>{{idea.created_date}}</td>
+        <td>
+            <a href="/work/{{idea.object.program_title}}/{{idea.id}}" class="btn btn-info">Открыть/редактировать</a>
+            <a href="/idea_delete/{{idea.id}}" class="btn btn-danger">Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
