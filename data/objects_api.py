@@ -7,7 +7,8 @@ from data.objects import Object
 blueprint = flask.Blueprint('objects_api', __name__,
                             template_folder='templates')
 
-@blueprint.route('/objects')
+
+@blueprint.route('/api/objects')
 def get_objects():
     session = db_session.create_session()
     obj = session.query(Object).all()
@@ -19,7 +20,8 @@ def get_objects():
         }
     )
 
-@blueprint.route('/objects/<string:obj_name>',  methods=['GET'])
+
+@blueprint.route('/api/objects/<string:obj_name>',  methods=['GET'])
 def get_one_object(obj_name):
     session = db_session.create_session()
     obj = session.query(Object).get(obj_name)

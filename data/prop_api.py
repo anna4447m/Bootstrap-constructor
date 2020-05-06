@@ -8,7 +8,8 @@ from data.properties import Property
 blueprint = flask.Blueprint('prop_api', __name__,
                             template_folder='templates')
 
-@blueprint.route('/properties')
+
+@blueprint.route('/api/properties')
 def get_properties():
     session = db_session.create_session()
     prop = session.query(Property).all()
@@ -20,7 +21,8 @@ def get_properties():
         }
     )
 
-@blueprint.route('/properties/<int:pr_id>',  methods=['GET'])
+
+@blueprint.route('/api/properties/<int:pr_id>',  methods=['GET'])
 def get_prop_values(pr_id):
     session = db_session.create_session()
     prop_val = session.query(Property_values).all()

@@ -16,4 +16,4 @@ class Property_values(SqlAlchemyBase, SerializerMixin):
     property = orm.relation('Property')
 
     def __repr__(self):
-        return '<Property_values> '+str(self.id) +' '+ self.prop_id +' '+ self.program_title +' '+ self.title_for_human
+        return '<Property_values> '+str(self.id) +' '+ str(self.prop_id) +' '+ self.program_title +' '+ self.title_for_human

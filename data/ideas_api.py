@@ -7,7 +7,8 @@ from data.ideas import Idea
 blueprint = flask.Blueprint('ideas_api', __name__,
                             template_folder='templates')
 
-@blueprint.route('/ideas')
+
+@blueprint.route('/api/ideas')
 def get_ideas():
     session = db_session.create_session()
     idea = session.query(Idea).all()
@@ -20,7 +21,8 @@ def get_ideas():
         }
     )
 
-@blueprint.route('/ideas/<int:idea_id>',  methods=['GET'])
+
+@blueprint.route('/api/ideas/<int:idea_id>',  methods=['GET'])
 def get_one_idea(idea_id):
     session = db_session.create_session()
     idea = session.query(Idea).get(idea_id)
@@ -32,6 +34,7 @@ def get_one_idea(idea_id):
                                     'component_parameters_values', 'component_text'))
         }
     )
+
 
 @blueprint.route('/ideas/<int:idea_id>', methods=['DELETE'])
 def delete_idea(idea_id):

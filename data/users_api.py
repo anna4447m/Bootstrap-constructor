@@ -7,7 +7,8 @@ from data.users import User
 blueprint = flask.Blueprint('users_api', __name__,
                             template_folder='templates')
 
-@blueprint.route('/users')
+
+@blueprint.route('/api/users')
 def get_users():
     session = db_session.create_session()
     user = session.query(User).all()
@@ -19,7 +20,8 @@ def get_users():
         }
     )
 
-@blueprint.route('/users/<string:user_login>',  methods=['GET'])
+
+@blueprint.route('/api/users/<string:user_login>',  methods=['GET'])
 def get_one_user(user_login):
     session = db_session.create_session()
     user = session.query(User).get(user_login)
@@ -31,7 +33,8 @@ def get_one_user(user_login):
         }
     )
 
-@blueprint.route('/users/<string:user_login>', methods=['DELETE'])
+
+@blueprint.route('/api/users/<string:user_login>', methods=['DELETE'])
 def delete_user(user_login):
     session = db_session.create_session()
     user = session.query(User).get(user_login)

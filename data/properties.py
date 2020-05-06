@@ -12,4 +12,4 @@ class Property(SqlAlchemyBase, SerializerMixin):
     program_title = sqlalchemy.Column(sqlalchemy.String)
 
     def __repr__(self):
-        return '<Property> ' + str(self.id) + ' ' + self.program_title + ' ' + self.title_for_human
+        return '<Property> ' + str(self.id) + ' ' + self.program_title
