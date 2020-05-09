@@ -154,7 +154,7 @@ class EditSaveForm(FlaskForm):
 @app.route('/index')
 def index():
     global params, texts
-    komponents = get('http://localhost:8080/api/objects').json()
+    komponents = get('http://bootstrap-constructor.herokuapp.com/api/objects').json()
     params = {}
     texts = {}
     return render_template('index.html', komponent=komponents, name='first')
