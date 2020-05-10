@@ -138,7 +138,7 @@ class LoginForm(FlaskForm):
 
 
 class SaveForm(FlaskForm):
-    name = StringField('Придумайте назване для идеи, по которому вы потом сможете его узнать',
+    name = StringField('Придумайте название для идеи, по которому вы потом сможете его узнать',
                        validators=[DataRequired()])
     submit = SubmitField('Сохранить')
 

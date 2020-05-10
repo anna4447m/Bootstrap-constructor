@@ -1,6 +1,6 @@
 from requests import get, delete
 
-#  API ля таблицы users
+#  API для таблицы users
 #  получение информации о пользователе/пользователях
 print(get('http://localhost:8080/api/users').json())  # получение всех пользователей
 print(get('http://localhost:8080/api/users/2').json())  # корректное получение одного пользователя по id
@@ -33,7 +33,7 @@ print(get('http://localhost:8080/api/objects/2').json())  # корректное
 print(get('http://localhost:8080/api/objects/').json())  # ошибочный запрос - пустой
 print(get('http://localhost:8080/api/objects/999').json())  # ошибочный запрос - нет такого id
 print(get('http://localhost:8080/api/objects/alert').json())  # ошибочный запрос - строка
-# удаление идеи по id
+# удаление компонента по id
 print(delete('http://localhost:8080/api/objects/').json())  # ошибочный запрос - пустой
 print(delete('http://localhost:8080/api/objects/999').json())  # ошибочный запрос - нет такого id
 print(delete('http://localhost:8080/api/objects/alert').json())  # ошибочный запрос - строка
